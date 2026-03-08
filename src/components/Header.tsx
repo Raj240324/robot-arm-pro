@@ -463,7 +463,7 @@ const Header: React.FC = () => {
                 src={BRANDING.logoLight} 
                 alt={BRANDING.fullName} 
                 style={{
-                  height: 40,
+                  height: 60,
                   width: "auto",
                   transition: "opacity 0.2s",
                 }}
@@ -890,7 +890,7 @@ const Header: React.FC = () => {
                 <img 
                   src={BRANDING.logoLight} 
                   alt={BRANDING.fullName} 
-                  style={{ height: 32, width: "auto" }}
+                  style={{ height: 48, width: "auto" }}
                 />
               </div>
               <button
