@@ -600,25 +600,6 @@ export default function HeroScrollCanvas() {
               hidden={isFullyLoaded}
             />
           )}
-
-          {/* ── Frame counter (debug — remove in production) ── */}
-          {process.env.NODE_ENV === "development" && !reducedMotion && (
-            <div
-              aria-hidden="true"
-              style={{
-                position: "absolute",
-                top: "1rem",
-                right: "1rem",
-                zIndex: 30,
-                fontFamily: "'DM Mono', monospace",
-                fontSize: "0.65rem",
-                color: "rgba(255,255,255,0.3)",
-                letterSpacing: "0.1em",
-              }}
-            >
-              {loadedCount} / {totalFrames} frames
-            </div>
-          )}
         </div>
 
         {/* ── Bottom gradient blending into next section ── */}
