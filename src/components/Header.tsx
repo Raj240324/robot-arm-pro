@@ -88,8 +88,8 @@ const BRANDING = {
   shortName: "SCOPE",
   phone:     "+91 98765 43210",
   email:     "hello@scopeaihub.com",
-  logoLight: "/logo-light.svg", // replace with real paths
-  logoDark:  "/logo-dark.svg",
+  logoLight: "/Logo_White.webp", // replace with real paths
+  logoDark:  "/Logo_White.webp",
 };
 
 // ── Stub modal hook — swap with: import { useModal } from '../../context/ModalContext'
@@ -458,19 +458,16 @@ const Header: React.FC = () => {
           <nav style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
 
             {/* ── Logo ──────────────────────────────────────────────────── */}
-            <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-              <span style={{
-                fontFamily: T.fontDisplay,
-                fontSize: "1.6rem",
-                letterSpacing: "0.08em",
-                backgroundImage: T.grad,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                transition: "opacity 0.2s",
-              }}>
-                {BRANDING.fullName}
-              </span>
+            <Link href="/" style={{ textDecoration: "none", flexShrink: 0, display: "flex", alignItems: "center" }}>
+              <img 
+                src={BRANDING.logoLight} 
+                alt={BRANDING.fullName} 
+                style={{
+                  height: 40,
+                  width: "auto",
+                  transition: "opacity 0.2s",
+                }}
+              />
             </Link>
 
             {/* ── Desktop Nav ───────────────────────────────────────────── */}
@@ -889,18 +886,12 @@ const Header: React.FC = () => {
               padding: "1.5rem 1.5rem 1rem",
               borderBottom: `1px solid ${T.border}`,
             }}>
-              <div>
-                <p style={{
-                  fontFamily: T.fontDisplay, fontSize: "1.1rem", letterSpacing: "0.1em",
-                  backgroundImage: T.grad, WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>
-                  {BRANDING.fullName}
-                </p>
-                <p style={{ fontFamily: T.fontMono, fontSize: "0.6rem", color: T.muted,
-                            letterSpacing: "0.15em", marginTop: "0.2rem" }}>
-                  Navigation Menu
-                </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                <img 
+                  src={BRANDING.logoLight} 
+                  alt={BRANDING.fullName} 
+                  style={{ height: 32, width: "auto" }}
+                />
               </div>
               <button
                 onClick={() => setIsOpen(false)}
