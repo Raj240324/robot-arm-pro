@@ -467,6 +467,7 @@ const Header: React.FC = () => {
                   width: "auto",
                   display: "block",
                   transition: "opacity 0.2s",
+                  marginTop:10,
                 }}
               />
             </Link>
