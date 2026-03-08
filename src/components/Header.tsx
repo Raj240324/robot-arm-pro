@@ -458,13 +458,14 @@ const Header: React.FC = () => {
           <nav style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
 
             {/* ── Logo ──────────────────────────────────────────────────── */}
-            <Link href="/" style={{ textDecoration: "none", flexShrink: 0, display: "flex", alignItems: "center" }}>
+            <Link href="/" style={{ textDecoration: "none", flexShrink: 0, display: "flex", alignItems: "center", height: "100%" }}>
               <img 
                 src={BRANDING.logoLight} 
                 alt={BRANDING.fullName} 
                 style={{
                   height: 60,
                   width: "auto",
+                  display: "block",
                   transition: "opacity 0.2s",
                 }}
               />
@@ -883,14 +884,15 @@ const Header: React.FC = () => {
             {/* Panel header */}
             <div style={{
               display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "1.5rem 1.5rem 1rem",
+              padding: "0.75rem 1.5rem",
               borderBottom: `1px solid ${T.border}`,
+              height: 72,
             }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", height: "100%" }}>
                 <img 
                   src={BRANDING.logoLight} 
                   alt={BRANDING.fullName} 
-                  style={{ height: 48, width: "auto" }}
+                  style={{ height: 48, width: "auto", display: "block" }}
                 />
               </div>
               <button
