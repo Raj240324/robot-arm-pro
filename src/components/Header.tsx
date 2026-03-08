@@ -266,6 +266,18 @@ const Header: React.FC = () => {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600&family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
         @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
         @keyframes fadeInDown   { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pageFoldDown {
+          from { 
+            opacity: 0; 
+            transform: perspective(1000px) rotateX(-15deg); 
+            transform-origin: top;
+          }
+          to { 
+            opacity: 1; 
+            transform: perspective(1000px) rotateX(0deg); 
+            transform-origin: top;
+          }
+        }
       `}</style>
 
       {/* ════════════════════════════════════════════════════════════════════
@@ -544,7 +556,8 @@ const Header: React.FC = () => {
                       <div style={{
                         position: "absolute", top: "calc(100% + 8px)", left: 0,
                         width: 220, zIndex: 60,
-                        animation: "fadeInDown 0.2s ease",
+                        animation: "pageFoldDown 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
+                        transformOrigin: "top",
                       }}>
                         <div style={{
                           background: "#0a0f1a",
@@ -592,7 +605,8 @@ const Header: React.FC = () => {
                         position: "absolute", top: "calc(100% + 8px)",
                         left: "50%", transform: "translateX(-50%)",
                         width: 740, zIndex: 60,
-                        animation: "fadeInDown 0.25s ease",
+                        animation: "pageFoldDown 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
+                        transformOrigin: "top",
                       }}>
                         <div style={{
                           background: "#0a0f1a",
