@@ -190,20 +190,7 @@ function ScrollIndicator({ sectionRef }: ScrollIndicatorProps) {
   }, [sectionRef]);
 
   return (
-    <div
-      aria-hidden="true"
-      style={{
-        position: "absolute",
-        right: "24px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        width: "2px",
-        height: "120px",
-        background: "rgba(255,255,255,0.12)",
-        zIndex: 20,
-        borderRadius: "1px",
-      }}
-    >
+    <div className="hero-scroll-indicator">
       <div
         ref={trackRef}
         style={{
@@ -227,75 +214,44 @@ interface HeroContentProps {
 }
 
 function HeroContent({ reducedMotion }: HeroContentProps) {
+  const anim = (delay: string) =>
+    reducedMotion ? "none" : `fadeSlideUp 0.9s cubic-bezier(.16,1,.3,1) ${delay} both`;
+
   return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: 20,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        padding: "clamp(1.5rem, 3.5vw, 3rem)",
-        paddingTop: "80px",
-        paddingBottom: "clamp(1.5rem, 4vw, 3.5rem)",
-        pointerEvents: "none",
-        overflow: "hidden",
-      }}
-    >
+    <div className="hero-content-wrap">
       {/* Eyebrow */}
       <div
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "0.6rem",
-          fontFamily: "'DM Mono', 'Courier New', monospace",
-          fontSize: "clamp(0.6rem, 1.1vw, 0.72rem)",
-          letterSpacing: "0.28em",
-          textTransform: "uppercase",
-          color: "#d64fd9",
-          marginBottom: "0.8rem",
-          animation: reducedMotion ? "none" : "fadeSlideUp 0.9s cubic-bezier(.16,1,.3,1) 0.1s both",
-        }}
+        className="hero-eyebrow"
+        style={{ animation: anim("0.1s") }}
       >
-        <span style={{ width: 28, height: 1, background: "linear-gradient(90deg,#d64fd9,#b833bb)", display: "inline-block", flexShrink: 0 }} />
+        <span style={{
+          width: 24, height: 1, flexShrink: 0, display: "inline-block",
+          background: "linear-gradient(90deg,#d64fd9,#b833bb)",
+        }} />
         Built for the AI Era
       </div>
 
       {/* Headline */}
       <h1
-        style={{
-          fontFamily: "'Bebas Neue', 'Arial Black', sans-serif",
-          fontWeight: 400,
-          fontSize: "clamp(2.8rem, 6.5vw, 6rem)",
-          lineHeight: 0.92,
-          letterSpacing: "0.02em",
-          color: "#f5f0ea",
-          margin: "0 0 0.9rem",
-          animation: reducedMotion ? "none" : "fadeSlideUp 0.9s cubic-bezier(.16,1,.3,1) 0.25s both",
-          textShadow: "0 4px 40px rgba(0,0,0,0.6)",
-        }}
+        className="hero-h1"
+        style={{ animation: anim("0.25s") }}
       >
         Dominate<br />
         with{" "}
-        <span
-          style={{
-            background: "linear-gradient(110deg, #d64fd9, #b833bb)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
+        <span style={{
+          backgroundImage: "linear-gradient(110deg, #d64fd9, #b833bb)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}>
           Intelligence.
         </span>
         <br />
-        <span
-          style={{
-            WebkitTextStroke: "1.5px rgba(245,240,234,0.3)",
-            WebkitTextFillColor: "transparent",
-            color: "transparent",
-          }}
-        >
+        <span style={{
+          WebkitTextStroke: "1.5px rgba(245,240,234,0.3)",
+          WebkitTextFillColor: "transparent",
+          color: "transparent",
+        }}>
           Lead Without
         </span>
         <br />
@@ -304,17 +260,8 @@ function HeroContent({ reducedMotion }: HeroContentProps) {
 
       {/* Subheadline */}
       <p
-        style={{
-          fontFamily: "'Barlow', sans-serif",
-          fontWeight: 300,
-          fontStyle: "italic",
-          fontSize: "clamp(1rem, 1.7vw, 1.15rem)",
-          lineHeight: 1.65,
-          color: "rgba(245,240,234,0.55)",
-          maxWidth: "46ch",
-          margin: "0 0 1.6rem",
-          animation: reducedMotion ? "none" : "fadeSlideUp 0.9s cubic-bezier(.16,1,.3,1) 0.4s both",
-        }}
+        className="hero-sub"
+        style={{ animation: anim("0.4s") }}
       >
         Advanced AI and Cloud programs engineered to create fearless
         innovators ready to compete on a global stage.
@@ -322,82 +269,16 @@ function HeroContent({ reducedMotion }: HeroContentProps) {
 
       {/* CTAs */}
       <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-          flexWrap: "wrap",
-          pointerEvents: "auto",
-          animation: reducedMotion ? "none" : "fadeSlideUp 0.9s cubic-bezier(.16,1,.3,1) 0.55s both",
-        }}
+        className="hero-cta-row"
+        style={{ animation: anim("0.55s") }}
       >
-        {/* Primary CTA */}
-        <a
-          href="#courses"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            padding: "0.9rem 2.2rem",
-            background: "linear-gradient(110deg, #d64fd9, #b833bb)",
-            color: "#fff",
-            fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif",
-            fontWeight: 700,
-            fontSize: "1rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            textDecoration: "none",
-            clipPath: "polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))",
-            boxShadow: "0 4px 28px rgba(214,79,217,0.45)",
-            transition: "opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.transform = "translateY(-2px)";
-            el.style.boxShadow = "0 8px 36px rgba(214,79,217,0.65)";
-          }}
-          onMouseLeave={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.transform = "translateY(0)";
-            el.style.boxShadow = "0 4px 28px rgba(214,79,217,0.45)";
-          }}
-        >
+        <a href="#courses" className="hero-btn-primary">
           Explore Courses
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M2 7h10M8 3l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
-
-        {/* Secondary CTA */}
-        <a
-          href="#demo"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            padding: "0.9rem 2.2rem",
-            border: "1px solid rgba(245,240,234,0.2)",
-            color: "#f5f0ea",
-            fontFamily: "'Barlow Condensed', 'Arial Narrow', sans-serif",
-            fontWeight: 700,
-            fontSize: "1rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            textDecoration: "none",
-            backdropFilter: "blur(6px)",
-            clipPath: "polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))",
-            transition: "background 0.2s ease, border-color 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.background = "rgba(214,79,217,0.1)";
-            el.style.borderColor = "rgba(214,79,217,0.5)";
-          }}
-          onMouseLeave={(e) => {
-            const el = e.currentTarget as HTMLAnchorElement;
-            el.style.background = "transparent";
-            el.style.borderColor = "rgba(245,240,234,0.2)";
-          }}
-        >
+        <a href="#demo" className="hero-btn-ghost">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.2" />
             <path d="M5.5 5l3 2-3 2V5z" fill="currentColor" />
@@ -408,33 +289,24 @@ function HeroContent({ reducedMotion }: HeroContentProps) {
 
       {/* Scroll hint */}
       <div
+        className="hero-scroll-hint"
         style={{
-          marginTop: "1.4rem",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-          opacity: 0,
           animation: reducedMotion
             ? "none"
             : "fadeSlideUp 0.8s ease 0.9s both, scrollHintBob 2s ease-in-out infinite 2s",
         }}
       >
-        <div
-          style={{
-            width: 1,
-            height: 36,
-            background: "linear-gradient(to bottom, #d64fd9, transparent)",
-          }}
-        />
-        <span
-          style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: "0.58rem",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "rgba(214,79,217,0.6)",
-          }}
-        >
+        <div style={{
+          width: 1, height: 32, flexShrink: 0,
+          background: "linear-gradient(to bottom, #d64fd9, transparent)",
+        }} />
+        <span style={{
+          fontFamily: "'DM Mono', monospace",
+          fontSize: "0.58rem",
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          color: "rgba(214,79,217,0.6)",
+        }}>
           Scroll to explore
         </span>
       </div>
@@ -511,7 +383,7 @@ export default function HeroScrollCanvas() {
 
   return (
     <>
-      {/* ── Global keyframe styles (injected once) ── */}
+      {/* ── Global keyframe + responsive styles ── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Barlow+Condensed:wght@700;800&family=DM+Mono:wght@400;500&display=swap');
 
@@ -519,18 +391,263 @@ export default function HeroScrollCanvas() {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes scrollHintBob {
           0%, 100% { transform: translateY(0); opacity: 0.4; }
           50%       { transform: translateY(5px); opacity: 0.6; }
         }
-
         @keyframes shimmer {
           0%   { background-position: 200% 0; }
           100% { background-position: -200% 0; }
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Hero content wrapper ── */
+        .hero-content-wrap {
+          position: absolute;
+          inset: 0;
+          z-index: 20;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: clamp(1.25rem, 4vw, 3rem);
+          padding-top: max(80px, env(safe-area-inset-top, 80px));
+          padding-bottom: clamp(1.5rem, 5vw, 3.5rem);
+          pointer-events: none;
+          overflow: hidden;
+        }
+
+        /* ── Eyebrow ── */
+        .hero-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-family: 'DM Mono', 'Courier New', monospace;
+          font-size: clamp(0.55rem, 2.2vw, 0.72rem);
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
+          color: #d64fd9;
+          margin-bottom: 0.7rem;
+        }
+
+        /* ── Headline ── */
+        .hero-h1 {
+          font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+          font-weight: 400;
+          font-size: clamp(2.2rem, 10vw, 6rem);
+          line-height: 0.93;
+          letter-spacing: 0.02em;
+          color: #f5f0ea;
+          margin: 0 0 0.75rem;
+          text-shadow: 0 4px 40px rgba(0,0,0,0.7);
+        }
+
+        /* ── Subheadline ── */
+        .hero-sub {
+          font-family: 'Barlow', sans-serif;
+          font-weight: 300;
+          font-style: italic;
+          font-size: clamp(0.88rem, 3.2vw, 1.15rem);
+          line-height: 1.65;
+          color: rgba(245,240,234,0.55);
+          max-width: 46ch;
+          margin: 0 0 1.4rem;
+        }
+
+        /* ── CTA row ── */
+        .hero-cta-row {
+          display: flex;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          pointer-events: auto;
+        }
+
+        /* ── Primary button ── */
+        .hero-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.8rem;
+          background: linear-gradient(110deg, #d64fd9, #b833bb);
+          color: #fff;
+          font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+          font-weight: 700;
+          font-size: clamp(0.82rem, 2.5vw, 1rem);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-decoration: none;
+          clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+          box-shadow: 0 4px 28px rgba(214,79,217,0.45);
+          transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+          white-space: nowrap;
+        }
+        .hero-btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 36px rgba(214,79,217,0.65);
+        }
+
+        /* ── Ghost button ── */
+        .hero-btn-ghost {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.8rem 1.8rem;
+          border: 1px solid rgba(245,240,234,0.2);
+          color: #f5f0ea;
+          font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+          font-weight: 700;
+          font-size: clamp(0.82rem, 2.5vw, 1rem);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-decoration: none;
+          backdrop-filter: blur(6px);
+          clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+          transition: background 0.2s ease, border-color 0.2s ease;
+          white-space: nowrap;
+        }
+        .hero-btn-ghost:hover {
+          background: rgba(214,79,217,0.1);
+          border-color: rgba(214,79,217,0.5);
+        }
+
+        /* ── Scroll hint ── */
+        .hero-scroll-hint {
+          margin-top: 1.2rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          opacity: 0;
+        }
+
+        /* ── Scroll indicator (right edge) ── */
+        .hero-scroll-indicator {
+          position: absolute;
+          right: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 2px;
+          height: 120px;
+          background: rgba(255,255,255,0.12);
+          z-index: 20;
+          border-radius: 1px;
+        }
+
+        /* ── Mobile dark gradient — makes text readable over the robot arm ── */
+        .hero-mobile-overlay {
+          display: none;
+          position: absolute;
+          inset: 0;
+          z-index: 6;
+          pointer-events: none;
+          background: linear-gradient(
+            to right,
+            rgba(4,6,12,0.82) 0%,
+            rgba(4,6,12,0.55) 50%,
+            transparent 100%
+          );
+        }
+
+        /* ════════════════════════════════════
+           TABLET  ≤ 1024px
+        ════════════════════════════════════ */
+        @media (max-width: 1024px) {
+          .hero-h1 {
+            font-size: clamp(2.4rem, 7.5vw, 4rem);
+          }
+        }
+
+        /* ════════════════════════════════════
+           MOBILE  ≤ 768px
+        ════════════════════════════════════ */
+        @media (max-width: 768px) {
+          .hero-mobile-overlay { display: block; }
+
+          .hero-scroll-indicator { display: none; }
+
+          .hero-content-wrap {
+            justify-content: flex-end;
+            padding: 72px 1.25rem 1.75rem;
+          }
+
+          .hero-eyebrow {
+            font-size: 0.6rem;
+            margin-bottom: 0.6rem;
+          }
+
+          .hero-h1 {
+            font-size: clamp(2rem, 11vw, 3rem);
+            line-height: 0.94;
+            margin-bottom: 0.65rem;
+          }
+
+          .hero-sub {
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            max-width: 36ch;
+          }
+
+          .hero-cta-row {
+            gap: 0.6rem;
+          }
+
+          .hero-btn-primary,
+          .hero-btn-ghost {
+            padding: 0.75rem 1.4rem;
+            font-size: 0.82rem;
+          }
+
+          .hero-scroll-hint {
+            margin-top: 0.9rem;
+          }
+        }
+
+        /* ════════════════════════════════════
+           SMALL MOBILE  ≤ 480px
+        ════════════════════════════════════ */
+        @media (max-width: 480px) {
+          .hero-h1 {
+            font-size: clamp(1.8rem, 12vw, 2.6rem);
+          }
+
+          .hero-cta-row {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .hero-btn-primary,
+          .hero-btn-ghost {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+
+        /* ════════════════════════════════════
+           LANDSCAPE MOBILE  (short + wide)
+        ════════════════════════════════════ */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .hero-content-wrap {
+            padding-top: 64px;
+            padding-bottom: 1rem;
+          }
+          .hero-h1 { font-size: clamp(1.6rem, 5vh, 3rem); margin-bottom: 0.4rem; }
+          .hero-sub { display: none; }
+          .hero-scroll-hint { display: none; }
+        }
+
+        /* ════════════════════════════════════
+           REDUCED MOTION
+        ════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+          .hero-eyebrow,
+          .hero-h1,
+          .hero-sub,
+          .hero-cta-row,
+          .hero-scroll-hint {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
       `}</style>
 
       {/*
@@ -586,6 +703,9 @@ export default function HeroScrollCanvas() {
           <VignetteOverlay />
           <ScanlineOverlay />
 
+          {/* ── Mobile left-side dark gradient (text readability) ── */}
+          <div className="hero-mobile-overlay" aria-hidden="true" />
+
           {/* ── Hero text content (z-20) ── */}
           <HeroContent reducedMotion={reducedMotion} />
 
@@ -599,6 +719,25 @@ export default function HeroScrollCanvas() {
               total={totalFrames}
               hidden={isFullyLoaded}
             />
+          )}
+
+          {/* ── Frame counter (debug — remove in production) ── */}
+          {process.env.NODE_ENV === "development" && !reducedMotion && (
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                zIndex: 30,
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "0.65rem",
+                color: "rgba(255,255,255,0.3)",
+                letterSpacing: "0.1em",
+              }}
+            >
+              {loadedCount} / {totalFrames} frames
+            </div>
           )}
         </div>
 
